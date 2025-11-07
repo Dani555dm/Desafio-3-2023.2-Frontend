@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TaskCard } from '../TaskCard/TaskCard';
 import { AddTaskForm } from '../AddTaskForm/AddTaskForm';
 
-export const Column = ({ title, status, tasks, onAddTask }) => {
+export const Column = ({ title, tasks, onAddTask }) => {
   const [showForm, setShowForm] = useState(false);
 
   const handleSave = (taskData) => {
