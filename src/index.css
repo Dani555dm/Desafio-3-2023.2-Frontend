@@ -1,0 +1,200 @@
+/* src/index.css */
+
+/* --- Configurações Globais --- */
+body {
+  background-color: #2D2D2D; /* Fundo escuro da imagem */
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- Container Principal do Kanban --- */
+.kanban-board-container {
+  border: 1px solid #555;
+  background-color: #3a3f4b; /* Fundo do quadro */
+  border-radius: 12px;
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+/* O grid que segura as colunas */
+.kanban-board {
+  display: grid;
+  /* Cria 3 colunas de tamanho igual */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1px; /* Espaço fino entre elas */
+  border-left: 1px solid #555; /* Linha divisória inicial */
+}
+
+/* --- Componente Coluna --- */
+.column {
+  padding: 0 20px;
+  border-right: 1px solid #555; /* Linha divisória de cada coluna */
+}
+
+.column h2 {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-left: 5px;
+}
+
+.tasks-list {
+  min-height: 400px; /* Garante que a coluna tenha uma altura mínima */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaço entre os cartões */
+}
+
+/* --- Botão de Adicionar Tarefa (+) --- */
+.add-task-btn {
+  background-color: #4a4a4a; /* Fundo do botão + */
+  border: none;
+  color: white;
+  font-size: 2rem;
+  font-weight: 300; /* Fonte mais fina para o '+' */
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.2s;
+}
+
+.add-task-btn:hover {
+  background-color: #5a5a5a;
+}
+
+/* --- Componente Cartão de Tarefa (TaskCard) --- */
+.task-card {
+  padding: 16px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Cores específicas baseadas na imagem */
+.task-card.status-todo {
+  background-color: #8B5A2B; /* Marrom 'A Fazer' */
+}
+.task-card.status-doing {
+  background-color: #3A5A9B; /* Azul 'Fazendo' */
+}
+.task-card.status-done {
+  background-color: #4CAF50; /* Verde 'Feito' */
+}
+
+.task-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* Descrição "Lorem ipsum..." */
+.task-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Container para info (Responsável, Prazo) */
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+/* Para os ícones, recomendo a biblioteca 'react-icons'
+  (npm install react-icons)
+  E usá-los como componentes, ex: <FaUserCircle /> 
+  Aqui, estamos estilizando um <span> que pode conter o ícone.
+*/
+.task-info span {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaço entre ícone e texto */
+}
+
+/* --- Componente Formulário de Nova Tarefa (AddTaskForm) --- */
+.add-task-form {
+  /* O formulário tem o mesmo estilo do card "A Fazer" */
+  background-color: #8B5A2B; 
+  padding: 16px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-task-form input,
+.add-task-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-task-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.add-task-form input::placeholder,
+.add-task-form textarea::placeholder {
+  color: #777;
+}
+
+/* Botões de Salvar (✔️) e Cancelar (X) */
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* Alinha os botões à direita */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /* Botões redondos */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.form-actions button.save-btn {
+  background-color: white;
+  color: #8B5A2B; /* Cor do card 'A Fazer' */
+  border-color: white;
+}
+
+.form-actions button.cancel-btn:hover {
+  background-color: rgba(255, 0, 0, 0.2); /* Vermelho leve no hover */
+  border-color: rgba(255, 0, 0, 0.2);
+}
+
+.form-actions button.save-btn:hover {
+  background-color: #eee;
+  border-color: #eee;
+}
